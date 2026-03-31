@@ -1,0 +1,4 @@
+[00:00:04] Hello and welcome to the transcript.
+[00:00:06] The timestamps are completely optional
+and new lines get removed.
+Thank you for reading!
