@@ -6,10 +6,10 @@
 - Run python file
 
 ## Arguments
-- Input sound file: Filepath to audio file (.wav supported)
-- Input transcript: Filepath to transcript
-- Target output WPM: the desired output wpm
-- Dynamic range: The maximum word-to-word speed increase in WPM (default 50)
+- Input sound file:   Filepath to audio file (.wav supported)
+- Input transcript:   Filepath to transcript
+- Target output WPM:  The desired output wpm
+- Dynamic range:      The maximum word-to-word speed increase in WPM (default 50)
 
 ## Pre-requisites
 - Python 1.13
