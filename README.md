@@ -8,7 +8,7 @@
 ## Arguments
 - Input sound file:   Filepath to audio file (.wav supported)
 - Input transcript:   Filepath to transcript
-- Target output WPM:  The desired output wpm
+- Target output WPM:  The desired output WPM
 - Dynamic range:      The maximum word-to-word speed increase in WPM (default 50)
 
 ## Pre-requisites
