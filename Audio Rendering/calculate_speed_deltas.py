@@ -26,7 +26,7 @@ audio_path = f"Input/{NAME}.wav"
 
 # measuring sentence similarity and wordcounts per sentence #
 
-model_directory = "Model_Data/sentence_similarity"
+model_directory = "Models/sentence_similarity"
 
 # model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 # model.save_pretrained(model_directory)
@@ -99,12 +99,8 @@ for i in range(len(tokenized_transcript) - max_x):
 
 # measuring word probabilities #
 ngram = 10
-with open("Model_Data/vocab.pkl", "rb") as f:
+with open("Models/vocab.pkl", "rb") as f:
   vocab = pickle.load(f)
-with open(f"Model_Data/X_test_{ngram}-gram.pkl", "rb") as f:
-  X_test = pickle.load(f)
-with open(f"Model_Data/y_test_{ngram}-gram.pkl", "rb") as f:
-  y_test = pickle.load(f)
 
 
 word_to_idx = {word: i for i, word in enumerate(vocab)}
@@ -135,7 +131,7 @@ word_predictor_model = NGramModel(
   hidden_dim=128,
   num_layers=1
 )
-with open(f"Model_Data/trained_model_{ngram}-gram.pkl", "rb") as f:
+with open(f"Models/trained_model_{ngram}-gram.pkl", "rb") as f:
   word_predictor_model = pickle.load(f)
 word_predictor_model.to(device_cpu)
 
