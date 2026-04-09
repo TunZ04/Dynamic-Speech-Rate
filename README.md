@@ -1,8 +1,8 @@
 # How To Use
 
 ## Instructions
-- Download release
 - Ensure you have all prerequisites
+- Download release
 - Run python file
 
 ## Arguments
@@ -11,17 +11,15 @@
 - Target output WPM:  The desired output WPM
 - Dynamic range:      The maximum word-to-word speed increase in WPM (default 50)
 
-## Pre-requisites
+## Pre-requisites to use release
 - Python 1.13
 - numpy
-- pandas
 - nltk
-- [huggingface](https://huggingface.co/)
+- pickle
+- soundfile
+- [sentence transformers](https://huggingface.co/sentence-transformers)
 - [forcealign](https://github.com/lukerbs/forcealign) --requires ffmpeg 7.1.1 ( windows: winget install "FFmpeg (Shared)" --version 7.1.1 )
 - [torch](https://pytorch.org/)
-- [audiotsm](https://github.com/Muges/audiotsm)
-- soundfile
-- [sentence_transformers](https://huggingface.co/docs/hub/sentence-transformers)
 
 
 ## Datasets used:
