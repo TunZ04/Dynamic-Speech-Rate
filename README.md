@@ -23,6 +23,6 @@
 
 
 ## Datasets used:
-  - https://www.kaggle.com/datasets/miguelcorraljr/ted-ultimate-dataset/data
-  - https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+  - [For Training the N-grams Model](https://www.kaggle.com/datasets/miguelcorraljr/ted-ultimate-dataset/data)
+  - [For Measuring Sentence Similarity](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
 
