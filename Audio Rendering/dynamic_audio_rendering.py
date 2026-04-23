@@ -30,11 +30,29 @@ word_count = len(word_times)
 total_speaking_time_seconds = len(og_waveform) / sample_rate
 base_speaking_rate_minutes = word_count * (60 / total_speaking_time_seconds)
 base_speed_increase = 310 / base_speaking_rate_minutes
-dynamic_speed_multiplier = 100 / base_speaking_rate_minutes
+dynamic_speed_range = 60 / base_speaking_rate_minutes
+
+og_sample_count = len(og_waveform)
+new_sample_count = int(np.ceil(og_sample_count / base_speed_increase))
 
 print(f"Original WPM: {base_speaking_rate_minutes:.0f}")
 
-speeds = np.array(list(zip(map(lambda x: x.time_start * sample_rate, word_times), map(lambda x: (1 + x*dynamic_speed_multiplier)*base_speed_increase, wordspeed_deltas))))
+# normalise wordspeed deltas to the dynamic range centered around 1 #
+arr_min = np.min(wordspeed_deltas)
+arr_max = np.max(wordspeed_deltas)
+if arr_min != arr_max:
+  normalized_wordspeed_deltas = (0.5 + (wordspeed_deltas - arr_min) / (arr_max - arr_min)) * dynamic_speed_range
+
+
+# calculating how much the dynamic speed multiplier will affect the overall speed increase
+sample_count = 0
+for i in range(word_count - 1):
+  sample_count += (word_times[i+1].time_start - word_times[i].time_start) * (normalized_wordspeed_deltas[i])
+sample_count += ((og_sample_count / sample_rate) - word_times[-1].time_start) * (normalized_wordspeed_deltas[-1])
+sample_count *= sample_rate
+avg_speed_mul = sample_count / og_sample_count
+
+speeds = np.array(list(zip(map(lambda x: x.time_start * sample_rate, word_times), map(lambda x: x * base_speed_increase/avg_speed_mul, normalized_wordspeed_deltas))))
 
 
 og_sample_count = len(og_waveform)

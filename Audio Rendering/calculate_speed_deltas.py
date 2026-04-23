@@ -28,10 +28,11 @@ audio_path = f"Input/{NAME}.wav"
 
 model_directory = "Models/sentence_similarity"
 
-# model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-# model.save_pretrained(model_directory)
-
-model = SentenceTransformer(model_directory)
+if os.path.exists(model_directory):
+  model = SentenceTransformer(model_directory)
+else:
+  model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+  model.save_pretrained(model_directory)
 
 f = open(transcript_path, encoding='utf-8')
 transcript = f.read()
